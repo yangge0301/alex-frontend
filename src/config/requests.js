@@ -8,7 +8,7 @@ import { baseUrl } from './env'
 
 export default class HttpRequest {
   static requireParams = '';
-  
+
   /* 设置必传参数 */
   static setRequireParams(param){
     this.requireParams = param;
@@ -139,6 +139,7 @@ export default class HttpRequest {
     },retOrigin)
   }
   static post(url, data = {}, retOrigin = true, json=false) {
+    console.log(baseUrl+url)
     if (!json) {
       return this._request({
         url: baseUrl + url,
@@ -152,12 +153,12 @@ export default class HttpRequest {
         method: 'post',
         params: {},
         data: data
-      }, retOrigin, json)  
+      }, retOrigin, json)
     }
   }
   /* 上传文件接口 */
   static postFile(url, data= {}, formData, retOrigin = true) {
-    
+
     return this.uploadFileRequest({
       url: baseUrl + url,
       method: 'post',
